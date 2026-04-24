@@ -1,20 +1,19 @@
-// routes/userRoutes.js 
+// routes/produtosRoutes.js 
 const express = require('express'); 
 const router = express.Router(); 
-const produtoController = require('../components/produtoControllers'); 
+const produtosController = require('../controllers/produtoController'); 
 
-
-// Lista todos os usuários
-router.get('/', produtoController.getProduto); 
+// Lista todos os produtos
+router.get('/', produtosController.getProduct); 
+router.get('/buscar', produtosController.searchProducts);
  
-// Cria um novo usuário (espera nome, cpf, email, telefone no body)
-router.post('/', produtoController.createProduto); 
+// Cria um novo produto
+router.post('/', produtosController.createProduct); 
  
-// Atualiza um usuário pelo ID (espera nome, cpf, email, telefone no body)
-router.put('/:id', produtoController.updateProduto); 
+// Atualiza um produto pelo ID
+router.put('/:id', produtosController.updateProduct); 
  
-// Remove um usuário pelo ID
-router.delete('/:id', produtoController.deleteProduto); 
+// Remove um produto pelo ID
+router.delete('/:id', produtosController.deleteProduct); 
  
-
 module.exports = router;

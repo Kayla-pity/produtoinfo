@@ -1,13 +1,16 @@
 const express = require('express'); 
+const path = require('path');
 const app = express(); 
-const produtoRoutes = require('./routes/produtoRoutes');  
+const produtosRoutes = require('./routes/produtosRoutes');  
  
 // Middleware para interpretar JSON no corpo das requisições 
 app.use(express.json()); 
+
+// Serve os arquivos estáticos do front-end 
+app.use(express.static(path.join(__dirname, 'public')));
  
-// Aplica as rotas de produtos com o prefixo '/produtos' 
-// O caminho '/' no produtosRoutes.js se torna '/produtos' aqui. 
-app.use('/produtos', produtoRoutes);  
+// Rotas da API de produtos 
+app.use('/produtos', produtosRoutes);  
  
 // Inicia o servidor na porta 3000 
 app.listen(3000, () => { 
